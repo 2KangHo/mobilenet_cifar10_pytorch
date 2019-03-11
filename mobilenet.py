@@ -46,7 +46,6 @@ class MobileNet(nn.Module):
             out_planes = x if isinstance(x, int) else x[0]
             stride = 1 if isinstance(x, int) else x[1]
             layers.append(Block(in_planes, out_planes, stride))
-            self.cfg2.append(in_planes)
             in_planes = out_planes
         return nn.Sequential(*layers)
 
