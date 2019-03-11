@@ -1,7 +1,7 @@
 # MobileNet CIFAR10 PyTorch
 
 MobileNet with CIFAR10 Implementation on PyTorch  
-This Code is possible resume and eval model on different GPU or CPU environment from trained model checkpoint.  
+This Code is possible to resume and evaluate model on different GPU or CPU environment from trained model checkpoint.  
 And you can train this model on multi-gpu.
 
 ## Requirements
