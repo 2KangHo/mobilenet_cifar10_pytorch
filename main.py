@@ -62,7 +62,6 @@ def main():
                     model.load_state_dict(checkpoint['model'])
             else:
                 checkpoint = torch.load(ckpt_file, map_location=lambda storage, loc: storage)
-
                 try:
                     model.load_state_dict(checkpoint['model'])
                 except:
@@ -126,7 +125,6 @@ def main():
                     model.load_state_dict(checkpoint['model'])
             else:
                 checkpoint = torch.load(ckpt_file, map_location=lambda storage, loc: storage)
-
                 try:
                     model.load_state_dict(checkpoint['model'])
                 except:
