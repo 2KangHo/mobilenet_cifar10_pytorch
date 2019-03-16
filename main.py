@@ -6,10 +6,6 @@ import pathlib
 import os
 from os.path import isfile, join
 
-import math
-import numpy as np
-import matplotlib.pyplot as plt
-
 from tqdm import tqdm
 from collections import OrderedDict
 
