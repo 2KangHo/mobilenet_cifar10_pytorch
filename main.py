@@ -60,20 +60,26 @@ def main():
             print("==> Loading Checkpoint '{}'".format(opt.ckpt))
             if opt.cuda:
                 checkpoint = torch.load(ckpt_file, map_location=lambda storage, loc: storage.cuda(opt.gpuids[0]))
-                model.load_state_dict(checkpoint['model'])
+                try:
+                    model.module.load_state_dict(checkpoint['model'])
+                except:
+                    model.load_state_dict(checkpoint['model'])
             else:
                 checkpoint = torch.load(ckpt_file, map_location=lambda storage, loc: storage)
 
-                # create new OrderedDict that does not contain `module.`
-                new_state_dict = OrderedDict()
-                for k, v in checkpoint['model'].items():
-                    if k[:7] == 'module.':
-                        name = k[7:] # remove `module.`
-                    else:
-                        name = k[:]
-                    new_state_dict[name] = v
+                try:
+                    model.load_state_dict(checkpoint['model'])
+                except:
+                    # create new OrderedDict that does not contain `module.`
+                    new_state_dict = OrderedDict()
+                    for k, v in checkpoint['model'].items():
+                        if k[:7] == 'module.':
+                            name = k[7:] # remove `module.`
+                        else:
+                            name = k[:]
+                        new_state_dict[name] = v
 
-                model.load_state_dict(new_state_dict)
+                    model.load_state_dict(new_state_dict)
             
             start_epoch = checkpoint['epoch']
             optimizer.load_state_dict(checkpoint['optimizer'])
@@ -118,20 +124,26 @@ def main():
             print("==> Loading Checkpoint '{}'".format(opt.ckpt))
             if opt.cuda:
                 checkpoint = torch.load(ckpt_file, map_location=lambda storage, loc: storage.cuda(opt.gpuids[0]))
-                model.load_state_dict(checkpoint['model'])
+                try:
+                    model.module.load_state_dict(checkpoint['model'])
+                except:
+                    model.load_state_dict(checkpoint['model'])
             else:
                 checkpoint = torch.load(ckpt_file, map_location=lambda storage, loc: storage)
 
-                # create new OrderedDict that does not contain `module.`
-                new_state_dict = OrderedDict()
-                for k, v in checkpoint['model'].items():
-                    if k[:7] == 'module.':
-                        name = k[7:] # remove `module.`
-                    else:
-                        name = k[:]
-                    new_state_dict[name] = v
+                try:
+                    model.load_state_dict(checkpoint['model'])
+                except:
+                    # create new OrderedDict that does not contain `module.`
+                    new_state_dict = OrderedDict()
+                    for k, v in checkpoint['model'].items():
+                        if k[:7] == 'module.':
+                            name = k[7:] # remove `module.`
+                        else:
+                            name = k[:]
+                        new_state_dict[name] = v
 
-                model.load_state_dict(new_state_dict)
+                    model.load_state_dict(new_state_dict)
             
             start_epoch = checkpoint['epoch']
             optimizer.load_state_dict(checkpoint['optimizer'])
