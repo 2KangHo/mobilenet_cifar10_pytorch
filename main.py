@@ -2,8 +2,6 @@ from __future__ import print_function
 import time
 import shutil
 import pathlib
-
-import os
 from os.path import isfile, join
 
 from tqdm import tqdm
